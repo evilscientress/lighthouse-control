@@ -32,11 +32,14 @@ async def cmd_line_handler(args):
     if args.discover or not any((args.on, args.sleep, args.standby, args.identify, args.info)):
         lighthouses = await Lighthouse.discover()
     elif args.on:
-        await asyncio.gather(*[set_lh_powerstate(d, Lighthouse.POWER_STATE_ON) for d in args.on])
+        for lh in args.on:
+            await set_lh_powerstate(lh, Lighthouse.POWER_STATE_ON)
     elif args.standby:
-        await asyncio.gather(*[set_lh_powerstate(d, Lighthouse.POWER_STATE_STANDBY) for d in args.standby])
+        for lh in args.standby:
+            await set_lh_powerstate(lh, Lighthouse.POWER_STATE_STANDBY)
     elif args.sleep:
-        await asyncio.gather(*[set_lh_powerstate(d, Lighthouse.POWER_STATE_SLEEP) for d in args.sleep])
+        for lh in args.sleep:
+            await set_lh_powerstate(lh, Lighthouse.POWER_STATE_SLEEP)
     elif args.identify:
         for device in args.identify:
             try:

@@ -8,7 +8,7 @@ setup(
     author='Jenny Danzmayr',
     author_email='mail@evilscientress.de',
     url='https://github.com/evilscientress/lighthouse-control',
-    packages=['lighthouse-control'],
+    packages=['lighthouse_control'],
     license='Apache License 2.0',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',

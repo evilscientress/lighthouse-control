@@ -23,7 +23,7 @@ logging.basicConfig(level=logging.INFO)
 # run rest of the code in a async context
 async def set_lh_powerstate(device, power_state):
     try:
-        logging.debug('setting power state %s for device %s', Lighthouse.POWER_STATES[power_state], device)
+        logging.info('setting %s to power state %s', device, Lighthouse.POWER_STATES[power_state])
         await Lighthouse(device).set_power_state(power_state)
     except BleakError as e:
         logging.exception('Error communicating with lighthouse: %s', device)

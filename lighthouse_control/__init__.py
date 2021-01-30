@@ -92,6 +92,6 @@ class Lighthouse:
                         power_state = cls.POWER_STATES[
                             cls.power_state_from_byte(await client.read_gatt_char(cls.POWER_CHARACTERISTIC))
                         ]
-                        logger.info("Found Lighthouse %s, current power state: %s", d.name, power_state)
+                        logger.info("Found Lighthouse %s %s, current power state: %s", d.name, d.address, power_state)
                         lighthouses.append(cls(d))
         return lighthouses

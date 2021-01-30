@@ -1,4 +1,3 @@
-import asyncio
 import functools
 import logging
 from struct import pack, unpack
@@ -8,6 +7,7 @@ from bleak import BleakClient, BleakScanner
 from bleak.backends.device import BLEDevice
 
 logger = logging.getLogger('lighthouse_control')
+
 
 class Lighthouse:
 
@@ -95,9 +95,3 @@ class Lighthouse:
                         logger.info("Found Lighthouse %s, current power state: %s", d.name, power_state)
                         lighthouses.append(cls(d))
         return lighthouses
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(Lighthouse.discover())
